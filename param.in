@@ -1,0 +1,77 @@
+$physics
+	reference = "bottom"
+	rayleigh =     0.1260331E+09
+	internalHeating =         0.0000000
+	fcurv =         0.5463820
+	viscoLaw = "Arrhenius"
+	Ea =        17.6880952
+	Va =         0.0000000
+	surfTAdim =         0.1764706
+	TrefAdim =         1.0000000
+	ToffAdim =         0.0000000
+	viscoCutOffMax =        -1.0000000
+	viscoCutOffMin =        -1.0000000
+	smoothCutOff = .false.
+	yielding = .false.
+	uniformTemp = .false.	/
+
+$geometry
+	lengthX =         2.0000000
+	nx = 256
+	nz = 128	/
+
+$inout
+	verbose = 1
+	outputStem = "run"
+	writeEta = .false.
+	writeProfiles = .true.
+	writeExtraDiagnosis = .false.
+	fileEtaToRead = "eta.dat"
+	beginMethod = "continue"	/
+
+$boundaries
+	topT = "dirichlet"
+	topValueT =         0.0000000
+	botT = "dirichlet"
+	botValueT =         1.0000000
+	leftT = "periodic"
+	leftValueT =         0.0000000
+	rightT = "periodic"
+	rightValueT =         0.0000000
+	topV = "freeslip"
+	topValueV =         0.0000000
+	botV = "freeslip"
+	botValueV =         0.0000000
+	leftV = "periodic"
+	leftValueV =         0.0000000
+	rightV = "periodic"
+	rightValueV =         0.0000000	/
+
+$timer
+	endType = "time"
+	endValue =         1.0000000
+	writeType = "time"
+	freqLogs =     0.1000000E-04
+	freqMaps =         0.0005000
+	freqFiles =         0.0010000	/
+
+$compute
+	errorRes =     0.1000000E-07
+	errorChange =         0.0100000
+	nrelaxMin = 4
+	nrelaxMax = 40
+	alphaRelax =         1.5000000
+	extraRelaxInMG = .false.
+	gauss_seidel = .true.
+	Fcycles = .false.
+	methodEtaEff = "harmonic"
+	etaEffHarmonicCoeff =         1.0000000
+	alphaVisco =         1.0000000
+	alphaCorrSf =         0.5000000	/
+
+$advdiff
+	timeFactor =         1.0000000
+	heat_method = "ADI"
+	TVDscheme_temp = "minmod"
+	TVDscheme_conc = "superbee"	/
+
